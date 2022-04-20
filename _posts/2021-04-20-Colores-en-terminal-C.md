@@ -3,7 +3,7 @@ title: Colores en terminal C
 published: true
 ---
 
-# Cómo colorear la salida en C
+# Coloreando la salida en C
 
 Para inaugurar el blog, comenzaré con un pequeño post sobre cómo añadir color a
 las salidas de vuestros programas. Además, yo guardé todo en un archivo de cabecra `.h`,
