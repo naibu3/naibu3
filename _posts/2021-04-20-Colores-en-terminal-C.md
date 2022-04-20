@@ -45,3 +45,5 @@ Para imprimir con `printf()`:
 ```c
 printf("%sEste texto de mostrará azul%s\n", AZUL_T, RES_COL);
 ```
+
+Tenéis el archivo en mi [github](https://github.com/naibu3/clibs).
