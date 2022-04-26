@@ -9,6 +9,7 @@ Para inaugurar el blog, comenzaré con un pequeño post sobre cómo añadir colo
 las salidas de vuestros programas. Además, yo guardé todo en un archivo de cabecra `.h`,
 y lo guardé en la carpeta `/include` para incluirlo más facilmente.
 
+
 ## Cómo funciona
 
 Para cambiar el color del texto, debemos incluir al principio una cadena especial,
@@ -34,6 +35,7 @@ que C no imprime pero si toma en cuenta. A continuación dejo el listado:
 #define BLANCO_F "\x1b[47m"
 ```
 >Los defino como macros para facilitar el uso.
+
 
 De los dos números que se observan, definen si es el color de texto o fondo, o el color, respectivamente. Además, he definido RES_COL, la cadena que resetea el color del texto a aquel
 por defecto. Esta cadena debe incluirse siempre al acabar.
