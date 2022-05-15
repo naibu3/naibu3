@@ -14,7 +14,7 @@ toman como parámetro un tipo especial de estructura, `FILE(stdio.h)`. Esta estr
    Los ficheros de texto almacenan la información en texto plano, de forma que es 
 entendible por las personas. Para guardar información en ellos, se necesita de *separadores*, que dividan los bloques de información.
 
-###### Apertura
+##### Apertura
 
    La aperturase realizará mediante la función:
 
@@ -45,7 +45,7 @@ string que dirá si se puede leer, escribir,...etc, según la siguiente tabla:
 | w+ | L/E | Inicio | Borra | Crea |
 | a+ | L/Adición | Final | Abre, Agrega al final | Crea |
 
-###### Cierre
+##### Cierre
 
    El cierre se efectuará mediante la función:
 
@@ -56,7 +56,7 @@ string que dirá si se puede leer, escribir,...etc, según la siguiente tabla:
    La función recibe un puntero a *FILE* creado con `fopen`, así interrumpirá la 
 conexión creada y se vaciará el buffer, __es importante hacerlo de esta forma para cerrar el flujo de datos y evitar que queden cabeceras incompletas que corrompan el archivo__. Devuelve cero en caso de cerrarse bien o EOF (-1) si hay algún problema.
 
-###### E/S con formato
+##### E/S con formato
 
 ```c
 	int fprintf (FILE* f, const char* formato, ...);
@@ -70,7 +70,7 @@ Escribe en el archivo *f* la cadena *formato* con el formato indicado. Dvuelve e
 
 Lee datos del fichero *f* con la conversión establecida en *formato*. Devuelve EOF si alcanza el final del fichero o se produce algún error, en caso contrario devuelve el número de objetos convertidos.
 
-###### E/S de líneas
+##### E/S de líneas
 
 ```c
 	char* fgets (char* s, int n, FILE* f);
@@ -84,7 +84,7 @@ Lee como mucho n-1 caracteres del fichero referenciado por *f* y los copia en la
 
 Escribe la cadena s en el fichero referenciado por f. Devuelve un valor no negativo si tiene éxito ó EOF si ocurre un error de escritura.
 
-###### E/S de carácteres
+##### E/S de carácteres
 
 ```c
 	int fgetc (FILE *f); 
@@ -99,7 +99,7 @@ Devuelven el siguiente carácter del fichero referenciado por *f*, avanza el cur
 
 Escribe el carácter  en el fichero referenciado porfy lo devuelve, si hay error devuelve EOF.
 
-###### Otras funciones
+##### Otras funciones
 
 ```c
 	int remove (const char* nombre);
@@ -131,7 +131,7 @@ Los ficheros binarios guardan la información, como su nombre indica, en formato
 - **Cursor**, marca interna que apunta al registro activo, se incrementa cada vez que se procesa un registro (se lee o escribe).
 - **Clave**, valor (o un conjunto de valores) de un registro que lo identifica unívocamente. Es diferente para cada uno de los registros.
 
-###### Apertura
+##### Apertura
 
    La aperturase realizará mediante la función:
 
@@ -162,7 +162,7 @@ string que dirá si se puede leer, escribir,...etc, según la siguiente tabla:
 | w+b | L/E | Inicio | Borra | Crea |
 | a+b | L/Adición | Final | Abre, Agrega al final | Crea |
 
-###### E/S en ficheros binarios
+##### E/S en ficheros binarios
 
 ```c
 	size_t fread(void* ptr, size_t tam, size_t num, FILE* f);
@@ -176,7 +176,7 @@ Lee un máximo de *num* objetos de tamaño *tam* del fichero referenciado por *f
 
 Escribe en el fichero referenciado por *f* un máximo de *num* objetos de tamaño *tam* tomados del buffer referenciado por *ptr*. Devuelve el número de objetos escritos, que puede ser menor que *num* si hay algún error. El cursor del fichero avanza los bytes escritos.
 
-###### Funciones de posicionamiento
+##### Funciones de posicionamiento
 
 ```c
 	long ftell (FILE* f);
@@ -194,3 +194,6 @@ Devuelve cierto(=! 0) si se produce algún error. Establece la posición actual 
 - *SEEK_CUR* (1): posición actual del cursor.
 - *SEEK_END* (2): fin del fichero.
 
+##### Cierre
+
+El cierre se realizará igual que en ficheros de texto.
