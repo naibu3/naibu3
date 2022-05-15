@@ -36,7 +36,7 @@ el puntero será null, por lo que se suele llamar de la siguiente manera:
    Se pasará como parámetro el nombre del archivo y el modo, que será otro 
 string que dirá si se puede leer, escribir,...etc, según la siguiente tabla:
 
-| Modo | Accion | Si existe | Si no existe|
+| Modo | Accion | Posicion | Si existe | Si no existe|
 |---|---|---|---|---|
 | r | Lectura | Inicio | Abre | Error |
 | w | Escritura | Inicio | Borra | Crea |
@@ -153,7 +153,7 @@ el puntero será null, por lo que se suele llamar de la siguiente manera:
    Se pasará como parámetro el nombre del archivo y el modo, que será otro 
 string que dirá si se puede leer, escribir,...etc, según la siguiente tabla:
 
-| Modo | Accion | Si existe | Si no existe|
+| Modo | Accion | Posicion | Si existe | Si no existe|
 |---|---|---|---|---|
 | rb | Lectura | Inicio | Abre | Error |
 | wb | Escritura | Inicio | Borra | Crea |
