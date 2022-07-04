@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="generator" content="Jekyll">
+
+  <title>Colores en terminal C</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" /> <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Colores en terminal C | cblog.h</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Colores en terminal C" />
+<meta name="author" content="n4ibu3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Coloreando la salida en C" />
+<meta property="og:description" content="Coloreando la salida en C" />
+<link rel="canonical" href="http://localhost:8000/Colores-en-terminal-C" />
+<meta property="og:url" content="http://localhost:8000/Colores-en-terminal-C" />
+<meta property="og:site_name" content="cblog.h" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-20T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Colores en terminal C" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"n4ibu3","url":"https://ashishchaudhary.in/hacker-blog"},"dateModified":"2022-04-20T00:00:00+02:00","datePublished":"2022-04-20T00:00:00+02:00","description":"Coloreando la salida en C","headline":"Colores en terminal C","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8000/Colores-en-terminal-C"},"url":"http://localhost:8000/Colores-en-terminal-C"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+  <div>
+    <a href="/">
+    
+    <h1>n4ibu3@home:~$</h1>
+    </a>
+    <div class="header-links">
+      <a href="/archive"><h2 class="header-link">Archive</h2></a>
+<a href="/about"><h2 class="header-link">About</h2></a>
+<!--<a href="/atom.xml"><h2 class="header-link">RSS</h2></a>-->
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <section id="main_content">
+        <article>
+  <h2>Colores en terminal C</h2>
+  <time datetime="2022-04-20T00:00:00+02:00" class="by-line">20 Apr 2022</time>
+  <h1 id="coloreando-la-salida-en-c">Coloreando la salida en C</h1>
+
+<p>Para inaugurar el blog, comenzaré con un pequeño post sobre cómo añadir color a
+las salidas de vuestros programas. Además, yo guardé todo en un archivo de cabecra <code class="language-plaintext highlighter-rouge">.h</code>,
+y lo guardé en la carpeta <code class="language-plaintext highlighter-rouge">/include</code> para incluirlo más facilmente.</p>
+
+<h2 id="cómo-funciona">Cómo funciona</h2>
+
+<p>Para cambiar el color del texto, debemos incluir al principio una cadena especial,
+que C no imprime pero si toma en cuenta. A continuación dejo el listado:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define RES_COL "\x1b[0m"
+#define NEGRO_T "\x1b[30m"
+#define NEGRO_F "\x1b[40m"
+#define ROJO_T "\x1b[31m"
+#define ROJO_F "\x1b[41m"
+#define VERDE_T "\x1b[32m"
+#define VERDE_F "\x1b[42m"
+#define AMARILLO_T "\x1b[33m"
+#define AMARILLO_F "\x1b[43m"
+#define AZUL_T "\x1b[34m"
+#define AZUL_F "\x1b[44m"
+#define MAGENTA_T "\x1b[35m"
+#define MAGENTA_F "\x1b[45m"
+#define CYAN_T "\x1b[36m"
+#define CYAN_F "\x1b[46m"
+#define BLANCO_T "\x1b[37m"
+#define BLANCO_F "\x1b[47m"
+</span></code></pre></div></div>
+<blockquote>
+  <p>Los defino como macros para facilitar el uso.</p>
+</blockquote>
+
+<p>De los dos números que se observan, definen si es el color de texto o fondo, o el color, respectivamente. Además, he definido RES_COL, la cadena que resetea el color del texto a aquel
+por defecto. Esta cadena debe incluirse siempre al acabar.</p>
+
+<h2 id="ejemplo-de-uso">Ejemplo de uso</h2>
+
+<p>Para imprimir con <code class="language-plaintext highlighter-rouge">printf()</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%sEste texto de mostrará azul%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">AZUL_T</span><span class="p">,</span> <span class="n">RES_COL</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Tenéis el archivo en mi <a href="https://github.com/naibu3/clibs">github</a>.</p>
+
+</article>
+      </section>
+    </div>
+  </div>
+
+   <footer>
+  <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+    <span>
+        <b>n4ibu3</b>
+    </span>
+    
+    <span>© 2022</span>
+  </a>
+</footer>
+
+  
+</body>
+
+</html>

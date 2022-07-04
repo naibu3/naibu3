@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="generator" content="Jekyll">
+
+  <title>Cifrado César y afín</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" /> <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cifrado César y afín | cblog.h</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Cifrado César y afín" />
+<meta name="author" content="n4ibu3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduccion" />
+<meta property="og:description" content="Introduccion" />
+<link rel="canonical" href="http://localhost:8000/Cifrado-Cesar-y-afin" />
+<meta property="og:url" content="http://localhost:8000/Cifrado-Cesar-y-afin" />
+<meta property="og:site_name" content="cblog.h" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-04T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cifrado César y afín" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"n4ibu3","url":"https://ashishchaudhary.in/hacker-blog"},"dateModified":"2022-05-04T00:00:00+02:00","datePublished":"2022-05-04T00:00:00+02:00","description":"Introduccion","headline":"Cifrado César y afín","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8000/Cifrado-Cesar-y-afin"},"url":"http://localhost:8000/Cifrado-Cesar-y-afin"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+  <div>
+    <a href="/">
+    
+    <h1>n4ibu3@home:~$</h1>
+    </a>
+    <div class="header-links">
+      <a href="/archive"><h2 class="header-link">Archive</h2></a>
+<a href="/about"><h2 class="header-link">About</h2></a>
+<!--<a href="/atom.xml"><h2 class="header-link">RSS</h2></a>-->
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <section id="main_content">
+        <article>
+  <h2>Cifrado César y afín</h2>
+  <time datetime="2022-05-04T00:00:00+02:00" class="by-line">04 May 2022</time>
+  <h1 id="introduccion">Introduccion</h1>
+
+<p>El <em>cifrado cesar</em>, o <em>cifrado por desplazamiento</em>, es una de las técnicas de cifrado más simples y por tanto más usadas. Toma su nombre del archiconocido emperador romano, que lo empleaba como medida de seguridad al comunicarse con sus generales.</p>
+
+<p>En cuanto al funcionamiento, se basa en cambiar el alfabeto por uno desplazado n posiciones. De esta forma, HOLA desplazado dos posiciones pasaria a ser JQNC. Este cifrado suele formar parte de cifrados más complejos como el Vigenère o el ROT13. Sin embargo, por sí solo, no ofrece gran seguridad debido a su sencillez, lo que lo hace vulnerable a ataques de fuerza bruta.</p>
+
+<h2 id="aritmetica-modular">Aritmetica modular</h2>
+
+<p>El algoritmo de este cifrado puede ser expresado matemáticamente mediante aritmética modular[^1], empleando en lugar de letras su posición en el alfabeto (A=0, B=1, C=2,…).</p>
+
+<!--Referencias-->
+<p>[^1]En matemática, la aritmética modular es un sistema aritmético para clases de equivalencia de números enteros llamadas clases de congruencia. Algunas veces se le llama, sugerentemente, aritmética del reloj, ya que los números «dan la vuelta» tras alcanzar cierto valor llamado módulo.</p>
+
+<h3 id="cifrado">Cifrado</h3>
+
+<p>La expresión para el cifrado sería:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E(x) = x + n mod m
+</code></pre></div></div>
+
+<p>Donde x es la posicion de la letra, n el número de posiciones y m el tamaño del alfabeto.</p>
+
+<h5 id="ejemplo">Ejemplo:</h5>
+
+<p>Como ejemplo, encriptaremos la palabra “<em>HOLA</em>” con un desplazamiento de 4. Al cifrar el alfabeto quedaría:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>De modo que la palabra quedaría: “<em>LSPE</em>”. O haciéndolo todo letra a letra:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E("H") = E(7) = 7 + 4 = 11 = "L"
+E("O") = E(14) = 14 + 4 = 18 = "S"
+E("L") = E(11) = 11 + 4 = 15 = "P"
+E("A") = E(0) = 0 + 4 = 4 = "E"
+</code></pre></div></div>
+
+<h3 id="descifrado">Descifrado</h3>
+
+<p>Para descifrar el código basta con realizar la operación inversa, es decir retroceder <em>n</em> posiciones. La expresión para el descifrado sería:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D(x) = x - n mod m
+</code></pre></div></div>
+
+<p>Donde x es la posicion de la letra cifrada, n el número de posiciones y m el tamaño del alfabeto.</p>
+
+<h5 id="ejemplo-1">Ejemplo:</h5>
+
+<p>Como ejemplo descifraremos “<em>LSPE</em>”, la palabra del ejemplo anterior, a la que aplicamos un desplazamiento de 4. Para ello simplemente aplicaríamos el procedimiento a la inversa, bien mirando la equivalencia entre alfabeto cifrado y descifrado, o matemáticamente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D("L") = D(11) = 11 - 4 = 7 = "H"
+D("S") = D(18) = 18 - 4 = 14 = "O"
+D("P") = D(15) = 15 - 4 = 11 = "L"
+D("E") = D(4) = 4 - 4 = 0 = "A"
+</code></pre></div></div>
+
+<p>De esta forma ya tendríamos el mensaje descifrado. Sin embargo, ya disponíamos el desplazamiento aplicado, pero, en caso de no tenerlo, aún sería posible descifrarlo por fuerza bruta, es decir, probando todas los posibles desplazamientos.</p>
+
+<h1 id="cifrado-afín">Cifrado afín</h1>
+
+<p>El cifrado cesar, pese a ser uno de los más conocidos, es una generalización del cifrado afín. Este, es un cifrado por sustitución, que cambia cada letra por otra según una función matemática. Otorga mayor seguridad al ser más complejo, pero aún es posible descifrarlo fácilmente con fuerza bruta, método que se analizará en la <a href="https://naibu3.github.io/Desifrando-afin-python">segunda parte del post</a>.</p>
+
+<h3 id="cifrado-1">Cifrado</h3>
+
+<p>La fórmula aplicando la aritmética binaria para el cifrado sería:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E(x) = (a * x + b) mod m
+</code></pre></div></div>
+
+<p>Donde x es el índice de cada letra en el alfabeto, a y b, las constantes de decimación y desplazamiento; y m el número de elementos del alfabeto.</p>
+
+<p>Además, deben cumplirse ciertos requisitos:</p>
+
+<ul>
+  <li><strong>a</strong> debe ser prima entre sí con el número de elementos (que el máximo común divisor sea 1).</li>
+  <li><strong>a</strong> debe ser distinta de 0.</li>
+  <li><strong>b</strong> debe estar entre 0 y m, ambos inclusive.</li>
+</ul>
+
+<h5 id="ejemplo-2">Ejemplo</h5>
+
+<p>Para ilustrar el método encriptemos la palabra <code class="language-plaintext highlighter-rouge">"HOLA"</code> según el siguiente alfabeto:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+</code></pre></div></div>
+
+<p>Donde <code class="language-plaintext highlighter-rouge">A=0</code> y <code class="language-plaintext highlighter-rouge">Z=25</code>. Además emplearemos una <code class="language-plaintext highlighter-rouge">a = 19</code> y <code class="language-plaintext highlighter-rouge">b = 25</code> que cumplen las condiciones previamente mencionadas. Aplicando la fórmula al alfabeto, quedaría una equivalecia como esta:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <td>Z</td>
+      <td>S</td>
+      <td>L</td>
+      <td>E</td>
+      <td>X</td>
+      <td>Q</td>
+      <td>J</td>
+      <td>C</td>
+      <td>V</td>
+      <td>O</td>
+      <td>H</td>
+      <td>A</td>
+      <td>T</td>
+      <td>M</td>
+      <td>F</td>
+      <td>Y</td>
+      <td>R</td>
+      <td>K</td>
+      <td>D</td>
+      <td>W</td>
+      <td>P</td>
+      <td>I</td>
+      <td>B</td>
+      <td>U</td>
+      <td>N</td>
+      <td>G</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Y ya sólo quedaría sustituir según la tabla. O bien se puede calcular individualmente para cada una de las letras:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E("H") = E(7) = (19 * 7 + 25) mod 26 = 2 = "C"
+E("O") = E(14) = (19 * 14 + 25) mod 26 = 5 = "F"
+E("L") = E(11) = (19 * 11 + 25) mod 26 = 0 = "A"
+E("A") = E(0) = (19 * 0 + 25) mod 26 = 25 = "Y"
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>texto claro</th>
+      <th>H</th>
+      <th>O</th>
+      <th>L</th>
+      <th>A</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>indice del alfabeto normal</td>
+      <td>7</td>
+      <td>14</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>indice del alfabeto cifrado</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>texto cifrado</td>
+      <td>C</td>
+      <td>F</td>
+      <td>A</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="descifrado-1">Descifrado</h3>
+
+<p>La fórmula aplicando la aritmética binaria para el cifrado sería:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D(x) = (a⁻¹ * (x - b)) mod m
+</code></pre></div></div>
+
+<p>Donde x es el índice de cada letra en el alfabeto, a⁻¹ la inversa multiplicativa de a, b la constante de desplazamiento y m el número de elementos del alfabeto.</p>
+
+<p>Para descifrarlo al igual que con el <em>cifrado césar</em> deberemos aplicar la fórmula inversa. Para aplicarla, debemos encontrar la inversa multiplicativa de <em>a</em>, por algún método como el <em>algoritmo de Euclides extendido</em>. Una vez hayada podremos sustituir en la expresión para cada una de las letras, siempre y cuando conozcamos también <em>a</em> y <em>b</em>, en caso contrario será necesario recurrir a un análisis de frecuencias o a fuerza bruta.</p>
+
+<h5 id="ejemplo-3">EJEMPLO</h5>
+
+<p>Como ejemplo, descifraremos la palabra “<em>CFAY</em>”, que ciframos en el ejemplo anterior. Como ya conocemos <em>a</em> y <em>b</em>, solo será necesario aplicar la expresión antes mencionada:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a⁻¹= 11 #Calculado previamente con python3 (pow(a, -1, m))
+
+D("C") = D(2) = (11 * (2 - 25)) mod 26 = 7 = "H"
+D("F") = D(5) = (11 * (5 - 25)) mod 26 = 14 = "O"
+D("A") = D(0) = (11 * (0 - 25)) mod 26 = 11 = "L"
+D("Y") = D(25) = (11 * (25 - 25)) mod 26 = 0 = "A"
+</code></pre></div></div>
+
+<p>Así quedaría descifrado el mensaje. En caso de querer una explicación de cómo implementar una función para decodificar en python3, puedes echarle un ojo a mi <a href="https://naibu3.github.io/Desifrando-afin-python">siguiente post</a>.</p>
+
+<h1 id="fuentes">Fuentes</h1>
+<ul>
+  <li><a href="https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar">Wikipedia-Cifrado Cesar</a></li>
+  <li><a href="https://es.wikipedia.org/wiki/Cifrado_af%C3%ADn">Wikipedia-Cifrado Afin</a></li>
+  <li><a href="https://es.wikipedia.org/wiki/Aritm%C3%A9tica_modular">Wikipedia-Aritmetica Modular</a></li>
+  <li><a href="http://joaquin.medina.name/web2008/documentos/informatica/documentacion/seguridad/criptografia/CifraAfin/2013_08_22_LaCifraAfin.html">La güeb de Juaquín-La cifra afín</a>
+-<a href="https://www.delftstack.com/es/howto/python/mod-inverse-python/">DelfStack-Inverse-mod-python</a></li>
+</ul>
+
+</article>
+      </section>
+    </div>
+  </div>
+
+   <footer>
+  <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+    <span>
+        <b>n4ibu3</b>
+    </span>
+    
+    <span>© 2022</span>
+  </a>
+</footer>
+
+  
+</body>
+
+</html>
