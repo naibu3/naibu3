@@ -5,8 +5,7 @@ published: true
 
 # Dancing HTB
 
-En este artículo trataré la resolución de una de las máquinas del Tier 0 de HackTheBox. 
-
+En este artículo trataré la resolución de una de las máquinas del Tier 0 del starting point de HackTheBox. 
 
 ## Fase de reconocimiento
 
