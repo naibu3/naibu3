@@ -3,9 +3,9 @@ title: Three HTB walkthrough
 published: false
 ---
 
-# Responder HTB walkthrough
+# Three HTB walkthrough
 
-En este artículo trataremos la resolucion de la máquina Trhree de Hack the Box.
+En este artículo trataremos la resolucion de la máquina Three de Hack the Box.
 
 ## Fase de reconocimiento
 
@@ -17,7 +17,7 @@ $sudo nmap -p- --open -sS --min-rate 5000 -n -Pn <ip>
 
 Obteniendo:
 
-```bsh
+```bash
 PORT   STATE SERVICE REASON
 22/tcp open  ssh     syn-ack ttl 63
 80/tcp open  http    syn-ack ttl 63
